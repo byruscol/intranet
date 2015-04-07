@@ -1,0 +1,434 @@
+/*
+Theme Name: Vida
+Theme URI: http://www.culturavida.com
+Author: C3 - Byron Otalvaro
+Author URI: http://www.c3comunicaciones.com/
+Description: 2015 Custom theme for culturavida.com
+Version: 1.0
+*/
+
+body {
+    background: url("images/barra_sup.png") repeat-x scroll 0 0 #ffffff;
+    font-family: Helvetica;
+    font-size: 12px;
+    margin: 0;
+}
+#content {
+    margin: 0 auto;
+    width: 1017px;
+}
+#logo {
+    border: 0 none;
+    margin-left: -10px;
+    position: absolute;
+    z-index: 100;
+}
+#menu {
+    height: 75px;
+}
+#menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 26px 0 0 219px;
+}
+#menu ul li {
+    float: left;
+    font-size: 14px;
+    height: 34px;
+    padding: 15px 16px 0;
+}
+#menu ul li a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.navbar-collapse {
+    padding-left: 35px;
+}
+
+#subBusqueda {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    font-style: italic;
+    padding-right: 0;
+}
+#bannerPrincipal {
+    background-color: #fffff3;
+    height: 216px;
+    margin: 70px 0 0;
+    padding: 7px;
+    width: 1003px;
+}
+.bannerHome {
+    float: left;
+    height: 216px;
+    width: 519px;
+}
+.bannerText {
+    background-color: #232228;
+    float: left;
+    height: 216px;
+    width: 241px;
+}
+.bannerText h1 {
+    color: #ffffff;
+    font-style: italic;
+    font-weight: normal;
+    padding-left: 10px;
+}
+.bannerText p {
+    color: #ffffff;
+    font-style: italic;
+    font-weight: normal;
+    padding-left: 10px;
+}
+
+.bannerText a {
+    color: #bcbbb6;
+    text-decoration: none;
+}
+
+.titleBanner{
+    font-size: 25px;
+    padding: 0 10px 0 10px;
+}
+
+
+#slider{
+    width: 78%;
+    height: 100%;
+    float: left;
+}
+
+.slideThumbnail{
+    float: left;
+}
+#ulPrincipal {
+    float: left;
+    height: 216px;
+    list-style-type: none;
+    margin: 0 20px 0 0;
+    padding: 0;
+    width: 760px;
+}
+.leerMas {
+    color: #ffffff;
+    font-size: 17px;
+    font-style: italic;
+    font-weight: normal;
+    padding-left: 10px;
+    text-decoration: none;
+}
+.leerMas span {
+    color: #ff0000;
+}
+#fotoSemana {
+    background-color: #232228;
+    float: right;
+    height: 100%;
+    width: 22%;
+}
+
+#fotoSemana img{
+    width: 100% !important;
+}
+
+#cuerpo {
+    margin: 10px 0 0;
+    width: 1017px;
+}
+#contenidoCuerpo {
+    float: left;
+    margin-right: 20px;
+    width: 767px;
+}
+.titleArticulos {
+    background: url("images/linea_titulo.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+    color: #232228;
+    font-size: 28px;
+    font-style: italic;
+    margin: 0;
+}
+.bloqueArticulo {
+    background: #E5E5E5;
+    height: 190px;
+    margin-top: 14px;
+    padding: 10px;
+    width: 97%;
+}
+.bloqueArticulo h3 {
+    color: #c40202;
+    float: right;
+    font-style: italic;
+    margin: 0;
+    width: 68%;
+}
+.imgListArticles{
+   float: left;
+    margin-right: 20px;
+    width: 29%; 
+}
+.imgListArticles img {
+    width: 100%;
+}
+.excerpt {
+    height: 100%;
+    text-align: justify;
+    width: 68%;
+    height: 75%;
+    float: right;
+}
+
+.leerMasArticleList {
+    color: #ffffff;
+    font-size: 17px;
+    font-style: italic;
+    font-weight: normal;
+    padding-left: 10px;
+    text-decoration: none;
+    width: 68%;
+    display: block;
+}
+.leerMasArticleList span {
+    color: #ff0000;
+}
+
+.bloqueArticulo a {
+    color: #000000;
+    float: right;
+    font-weight: bold;
+    padding: 0;
+}
+#bannerArticulos {
+    height: 300px;
+    margin: 10px 0 0;
+    width: 767px;
+}
+#videoArticulo {
+    float: left;
+    margin-right: 10px;
+    width: 444px;
+}
+.tituloBanner {
+    background-color: #232228;
+    color: #ffffff;
+    font-size: 14px;
+    height: 17px;
+    margin: 0;
+    padding: 10px;
+}
+.tituloBanner span {
+    color: #c40202;
+}
+#portalesAmigos {
+    float: left;
+    width: 313px;
+}
+#portalesAmigos img {
+    margin-top: 5px;
+}
+#menuPagina {
+    float: left;
+    padding-top: 30px;
+    width: 230px;
+}
+#login {
+    background: url("images/login.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+    height: auto;
+    width: 230px;
+}
+#login h3 {
+    text-align: center;
+}
+#login table {
+    margin: 15px auto;
+}
+.tdTitulo {
+    font-size: 14px;
+    font-style: italic;
+}
+#publicidad {
+    width: 230px;
+}
+#publicidad img {
+    margin-top: 5px;
+}
+#pie {
+    background: url("images/barra_inf.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+    height: 126px;
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+}
+.bottonPagina {
+    background: url("images/boton_login.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    color: #ffffff;
+    font-weight: bold;
+    height: 25px;
+    width: 70px;
+}
+#contenidoInterno {
+    background: url("images/fondo_comentarios-36.png") repeat-y scroll 0 0 rgba(0, 0, 0, 0);
+    margin: 20px 0;
+    padding: 10px;
+    text-align: justify;
+    width: 747px;
+}
+#contenidoInterno p {
+    margin: 0;
+}
+#galeriaInterna div {
+    padding: 5px;
+}
+#galeriaInterna div img {
+    border: 0 none;
+    margin: 2px;
+}
+h4 {
+    color: #c40202;
+    font-style: italic;
+    width: 290px;
+}
+#imagenPrincipal {
+    float: left;
+}
+#calificaCompartir {
+    background: url("images/barra_califique-32.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 20px;
+    padding: 5px;
+}
+#calificaCompartir * {
+    color: #ffffff;
+}
+#textoCalifica {
+    float: left;
+    margin-right: 10px;
+}
+.registro {
+    float: left;
+    font-style: italic;
+    text-decoration: none;
+}
+#compartirArticulo {
+    float: right;
+}
+#tituloComentarios {
+    background: url("images/barra_cometario-33.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #ffffff;
+    font-style: italic;
+    height: 20px;
+    margin: 10px 0 0;
+    padding: 5px;
+}
+#tituloComentarios span {
+    color: #c40202;
+}
+#formComentario {
+    background: url("images/fondo_comentarios-36.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    margin: 10px 0 0;
+    padding: 10px;
+    text-align: center;
+    width: 748px;
+}
+#comentariosUsuario {
+    background: url("images/fondo_comentarios-36.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    margin: 10px 0 0;
+    padding: 10px;
+    width: 748px;
+}
+div.pagination {
+    margin: 3px;
+    padding: 7px;
+    text-align: center;
+}
+div.pagination a {
+    border: 1px solid #000000;
+    color: #000000;
+    margin: 2px;
+    padding: 2px 5px;
+    text-decoration: none;
+}
+div.pagination a:hover, div.pagination a:active {
+    background-color: #000000;
+    border: 1px solid #000000;
+    color: #fff;
+}
+div.pagination span.current {
+    background-color: #000000;
+    border: 1px solid #000000;
+    color: #fff;
+    font-weight: bold;
+    margin: 2px;
+    padding: 2px 5px;
+}
+div.pagination span.disabled {
+    border: 1px solid #eee;
+    color: #ddd;
+    margin: 2px;
+    padding: 2px 5px;
+}
+#cabezoteNota {
+    background: url("images/pizarraSuperior.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 21px;
+    margin: 20px auto 0;
+    width: 740px;
+}
+#cuerpoNota {
+    background: url("images/pizarraCuerpo.png") repeat-y scroll 0 0 rgba(0, 0, 0, 0);
+    height: 800px;
+    margin: 0 auto;
+    width: 740px;
+}
+#pieNota {
+    background: url("images/pizarraInferior.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 21px;
+    margin: 0 auto;
+    width: 740px;
+}
+#pizarra {
+    border: 1px solid #000;
+    height: 500px;
+    position: inherit;
+    width: 740px;
+}
+.box {
+    box-shadow: 2px 2px 0 #dddddd;
+    font-size: 13px;
+    overflow: hidden;
+    padding: 10px;
+    position: absolute;
+    width: 150px;
+}
+.handle {
+    cursor: move;
+}
+.active {
+    background-color: #cfc;
+    border-color: #ada;
+}
+.point {
+    background: none repeat scroll 0 0 #a00;
+    height: 4px;
+    margin: -2px 0 0 -2px;
+    position: absolute;
+    width: 4px;
+}
+.section {
+    display: none;
+}
+#formularioNota {
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    display: none;
+    height: 120px;
+    margin: 15px 0 0 80px;
+    padding: 20px;
+    position: absolute;
+    width: 400px;
+    z-index: 10000;
+}
+#imgArticulo {
+    max-height: 320px;
+    max-width: 750px;
+}

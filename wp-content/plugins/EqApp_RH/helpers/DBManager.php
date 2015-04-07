@@ -42,7 +42,7 @@ abstract class DBManager{
             $result = $this->get($query,"var");
             $this->currentIntegrante = $result["data"];
             $this->isRhAdmin = ( in_array( "administrator", $this->currentUser->roles ) 
-                                 || in_array( "editor", $this->currentUser->roles ))? true : false;
+                                 || in_array( "admin_rh", $this->currentUser->roles ))? true : false;
                     
             
             $this->gbd = new PDO('mysql:host='.$this->conn->dbhost.';dbname='.$this->conn->dbname, $this->conn->dbuser, $this->conn->dbpassword);
