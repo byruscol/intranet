@@ -8,7 +8,7 @@ $currentUserRoles = (array) $user->roles;
 <div class="row-fluid">
     <div class="span11">
         <?php
-        if( in_array( "administrator", $currentUserRoles ) || in_array( "editor", $currentUserRoles )) :
+        if( $details->isRhAdmin) :
         ?>
         <div class="jqGrid">
             <div class="wrap">

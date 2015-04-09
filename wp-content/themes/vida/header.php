@@ -55,4 +55,18 @@
                     ?>
                 </div>
             </nav>
-    <?php
+            <section id="main">
+            <div id="bannerPrincipal">
+                <div id="slider">
+                    <?php include TEMPLATEPATH .'/slideshow.php';?>
+                </div>
+                
+                <div id="fotoSemana">
+                    <?php include TEMPLATEPATH .'/fotoActitud.php';?>
+                    <?php 
+                    $category_id = get_cat_ID( 'Foto actitud' );
+                    $category_link = get_category_link( $category_id );
+                    ?>
+                    <a href="<?php echo $category_link; ?>" class="leerMas">Foto con actitud <span>+</span></a>
+                </div>            
+            </div>

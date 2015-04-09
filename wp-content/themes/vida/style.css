@@ -13,6 +13,10 @@ body {
     font-size: 12px;
     margin: 0;
 }
+
+#wpadminbar{
+    display: none !important;
+}
 #content {
     margin: 0 auto;
     width: 1017px;
@@ -111,6 +115,24 @@ body {
     padding: 0;
     width: 760px;
 }
+
+.ingresarPortal{
+    display: block;
+    height: 5px;
+    color: #F37820;
+    padding: 5px 0 15px 55px;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.derechos{
+    width: 228px;
+    height: 105px;
+    display: block;
+    margin: 0 auto;
+    background: url(images/derechos.png) no-repeat;
+}
+
 .leerMas {
     color: #ffffff;
     font-size: 17px;
@@ -119,6 +141,13 @@ body {
     padding-left: 10px;
     text-decoration: none;
 }
+
+.leerMasBlack{
+    color: #000000;
+    float: right;
+    padding-right: 10px;
+}
+
 .leerMas span {
     color: #ff0000;
 }
@@ -140,6 +169,7 @@ body {
 #contenidoCuerpo {
     float: left;
     margin-right: 20px;
+    margin-top: 25px;
     width: 767px;
 }
 .titleArticulos {
@@ -175,7 +205,8 @@ body {
     height: 100%;
     text-align: justify;
     width: 68%;
-    height: 75%;
+    height: 71%;
+    padding-top: 10px;
     float: right;
 }
 
@@ -209,6 +240,11 @@ body {
     margin-right: 10px;
     width: 444px;
 }
+
+.videActitud{
+    margin-top: 10px;
+    width: 100%;
+}
 .tituloBanner {
     background-color: #232228;
     color: #ffffff;
@@ -233,8 +269,8 @@ body {
     width: 230px;
 }
 #login {
-    background: url("images/login.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
-    height: auto;
+    background: url(images/logoV.png) no-repeat;
+    height: 60px;
     width: 230px;
 }
 #login h3 {
@@ -260,14 +296,49 @@ body {
     text-align: center;
     width: 100%;
 }
-.bottonPagina {
+#formComentario input[type="submit"] {
     background: url("images/boton_login.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
     border: medium none;
     color: #ffffff;
     font-weight: bold;
     height: 25px;
-    width: 70px;
 }
+
+.slideshow{
+    height: 100% !important;
+}
+
+.slidesjs-pagination{
+    margin-top: -70px;
+    width: 200px;
+}
+
+.slidesjs-pagination li{
+    display: inline-block;
+    text-align: center;
+}
+
+.slidesjs-pagination li a{
+    text-decoration: none;
+    display: block;
+    width: 15px;
+}
+
+.slidesjs-pagination li a.active{
+    background: #C40202;
+    color: #FFFFFF;
+}
+
+#formComentario textArea{
+    width: 85%;
+    height: 85px;
+}
+
+#formComentario a{
+    text-decoration: none;
+    color: #DB0000;
+}
+
 #contenidoInterno {
     background: url("images/fondo_comentarios-36.png") repeat-y scroll 0 0 rgba(0, 0, 0, 0);
     margin: 20px 0;
@@ -314,7 +385,7 @@ h4 {
     float: right;
 }
 #tituloComentarios {
-    background: url("images/barra_cometario-33.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: #232228;
     color: #ffffff;
     font-style: italic;
     height: 20px;
@@ -325,7 +396,7 @@ h4 {
     color: #c40202;
 }
 #formComentario {
-    background: url("images/fondo_comentarios-36.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: #E5E5E5;
     margin: 10px 0 0;
     padding: 10px;
     text-align: center;

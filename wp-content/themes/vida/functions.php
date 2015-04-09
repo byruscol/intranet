@@ -31,7 +31,7 @@ function custom_login_logo() {
                 font-family: Arial,Helvetica,sans-serif;
                 font-size: 14px;
             }
-            .login h1 a {width: auto !important; background-image:url('. get_bloginfo( 'template_directory' ) .'/images/favicon.png) !important; background-size: 80px auto !important;}
+            .login h1 a {width: auto !important; background-image:url('. get_bloginfo( 'template_directory' ) .'/images/logo.png) !important; background-size: 220px auto !important;}
             
             #loginform, #lostpasswordform {
                 background:  url("'. get_bloginfo( 'template_directory' ) .'/images/ingresar_fondo.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
@@ -54,22 +54,26 @@ function custom_login_logo() {
             .input{
                 border: 1px solid #aeaeae;
                 font-size: 14px;
-                height: 25px;
+                height: 35px;
                 margin-bottom: 10px;
                 padding: 2px 10px;
                 width: 93%;
             }
             #wp-submit{
-                background: url("'. get_bloginfo( 'template_directory' ) .'/images/login_btn.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+                background: url("'. get_bloginfo( 'template_directory' ) .'/images/boton_login.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
                 color: #fff;
                 cursor: pointer;
                 font-size: 14px;
-                height: 30px !important;
+                height: 25px !important;
                 line-height: 32px;
                 text-align: center;
                 width: 100%;
             }
             
+            .wp-core-ui .button-primary{
+                border: none !important;
+            }
+
             .login .message {
                 border-left: 4px solid #E98020;
             }

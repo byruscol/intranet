@@ -44,7 +44,7 @@ class integrantes extends DBManagerModel{
                         )h ON h.integranteId = i.integranteId
                   WHERE `deleted` = 0";
         
-        if( !in_array( "administrator", $this->currentUser->roles ) && !in_array( "editor", $this->currentUser->roles )) 
+        if( !$this->isRhAdmin) 
             $query .= " AND i.integranteId = ".$params["filter"];
         
         if(array_key_exists('where', $params)){

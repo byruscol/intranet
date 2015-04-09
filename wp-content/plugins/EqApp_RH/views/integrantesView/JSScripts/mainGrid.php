@@ -1,14 +1,16 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
+require_once "../../../helpers/Details.php";
 require_once "../../../helpers/Grid.php";
+$details = new Details("integrantes");
 
 header('Content-type: text/javascript');
 global $pluginURL;
 $user = wp_get_current_user();
 $currentUserRoles = (array) $user->roles;
 
-if( in_array( "administrator", $currentUserRoles ) || in_array( "editor", $currentUserRoles )) {
+if( $details->isRhAdmin) {
     require_once "../../class.buildView.php";
     $params = array("numRows" => 10
                     , "sortname" => "apellido"

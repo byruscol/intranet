@@ -41,6 +41,7 @@ abstract class DBManager{
             $query = "SELECT integranteId FROM ".$this->pluginPrefix."integrantesUsuarios i WHERE i.ID = ".$this->currentUser->ID;
             $result = $this->get($query,"var");
             $this->currentIntegrante = $result["data"];
+            
             $this->isRhAdmin = ( in_array( "administrator", $this->currentUser->roles ) 
                                  || in_array( "admin_rh", $this->currentUser->roles ))? true : false;
                     
