@@ -1,7 +1,15 @@
 <?php get_header();?>
             <div id="cuerpo">
                 <div id="contenidoCuerpo">
-                    <h1 class="titleArticulos"><?php single_cat_title("",true); ?></h1>
+                    <h1 class="titleArticulos">
+                        <div class="paginationPrev">
+                        <?php previous_posts_link("<< Anteriores");?>
+                        </div>
+                        <div class="paginationNext">
+                        <?php next_posts_link("Siguientes >>");?>
+                        </div>
+                        <?php single_cat_title("",true); ?>
+                    </h1>
                     <?php if(have_posts()): while(have_posts()) : the_post();?>
                             <div class="bloqueArticulo">
                                 <div class="imgListArticles">
@@ -9,14 +17,10 @@
                                 </div>
                                 <h3><?php echo $t= str_replace("Private:","", the_title("", "", false));?></h3>
                                 <div class="excerpt"><?php the_excerpt();?></div>
-                                <a href="<?php the_permalink(); ?>" class="leerMasArticleList">Leer mas <span>></span></a>
+                                <a href="<?php the_permalink(); ?>" class="leerMasArticleList">Leer más</a>
                             </div>
-                    <?php endwhile; ?>
-                    <div class="pagination">
-                        <?php previous_posts_link("< Anteriores");?>
-                        <?php next_posts_link("Siguientes >");?>
-                    </div>
-                    <?php else:?>
+                    <?php endwhile; 
+                    else:?>
                     <div class="home_txt">
                         <h2>No hay artículos</h2>
                         <p>No hay artículos</p>

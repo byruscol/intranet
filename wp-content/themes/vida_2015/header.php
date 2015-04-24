@@ -21,16 +21,16 @@
             $(function(){
                 if($("#slideshow")){
                     $("#slideshow").slidesjs({
-                      height: 351,
+                      height: 460,
                       navigation: false,
                       play: {
                           active: false,
                           effect: "fade",
-                          interval: 3000,
+                          interval: 68000,
                           auto: true,
                           swap: true,
                           pauseOnHover: false,
-                          restartDelay: 2500
+                          restartDelay: 8000
                         }
                     });
                 }
@@ -38,11 +38,22 @@
         </script>
     </head>
     <body>
-        <div id="content">
-            <nav id="menu" role="navigation">
-                <form action="busqueda.php" method="get"></form>
-                <a href="<?php bloginfo('url')?>"><img src="<?php bloginfo('template_url')?>/images/logo.png" id="logo" alt="Vida" /></a>
-
+        <a href="<?php bloginfo('url')?>"><img src="<?php bloginfo('template_url')?>/images/logo.png" id="logo" alt="Vida" /></a>
+        <div id="whiteBar">
+            <div id="menu" role="navigation">
+                <div id="search">
+                <?php echo $search = str_replace('id="s"','id="s" placeholder = "Búsqueda"',get_search_form(false)); ?>
+                </div>
+                <div id="login">
+                <?php 
+                $url = wp_login_url($redirect);
+                if ( is_user_logged_in() ): 
+                    $url = get_admin_url();?>
+                <a class="ingresarPortal" href="<?php echo wp_logout_url(home_url()); ?>" title="Logout">Salir</a>
+                <?php else:?>
+                <a class="ingresarPortal" href="<?php echo $url; ?>">Ingresar</a>
+                <?php endif;?>
+            </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <?php 
                         wp_nav_menu(
@@ -54,19 +65,20 @@
                             );
                     ?>
                 </div>
-            </nav>
+            </div>
+        </div>
+        
+        <div id="content">
+            
             <section id="main">
             <div id="bannerPrincipal">
                 <div id="slider">
                     <?php include TEMPLATEPATH .'/slideshow.php';?>
-                </div>
-                
-                <div id="fotoSemana">
-                    <?php include TEMPLATEPATH .'/fotoActitud.php';?>
-                    <?php 
-                    $category_id = get_cat_ID( 'Foto actitud' );
-                    $category_link = get_category_link( $category_id );
-                    ?>
-                    <a href="<?php echo $category_link; ?>" class="leerMas">Foto con actitud <span>+</span></a>
-                </div>            
+                </div>           
+            </div>
+            <div id="botones">
+                <a href="http://www.equitel.com.co" target="_blank" class="equitel"></a>
+                <a href="http://www.enconexion.com.co" target="_blank" class="enconexion"></a>
+                <a href="https://www.facebook.com/equitel" target="_blank" class="facebook"></a>
+                <a href="https://www.youtube.com/user/EquitelTV" class="youtube" target="_blank"></a>
             </div>

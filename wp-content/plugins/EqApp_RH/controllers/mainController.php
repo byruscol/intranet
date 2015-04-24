@@ -104,18 +104,18 @@ class mainController //extends resources
         wp_enqueue_script( 'ajaxfileupload' );
         
         $this->headScripts[] = 'ajaxfileupload';
-        wp_register_script('tinymce',  $this->pluginURL . 'js/tinymce/tinymce.min.js',$this->headScripts);
+        /*wp_register_script('tinymce',  $this->pluginURL . 'js/tinymce/tinymce.min.js',$this->headScripts);
         wp_enqueue_script( 'tinymce' );
 
-        $this->headScripts[] = 'tinymce';
+        $this->headScripts[] = 'tinymce';*/
         wp_register_script('validator',  $this->pluginURL . 'js/validator.js',$this->headScripts);
         wp_enqueue_script( 'validator' );
 
         $this->headScripts[] = 'validator';
-        wp_register_script('tinymceJQuery',  $this->pluginURL . 'js/tinymce/jquery.tinymce.min.js',$this->headScripts);
+        /*wp_register_script('tinymceJQuery',  $this->pluginURL . 'js/tinymce/jquery.tinymce.min.js',$this->headScripts);
         wp_enqueue_script( 'tinymceJQuery' );
 
-        $this->headScripts[] = 'tinymceJQuery';
+        $this->headScripts[] = 'tinymceJQuery';*/
         wp_register_script('googlechart', 'https://www.google.com/jsapi',$this->headScripts);
         wp_enqueue_script( 'googlechart' );
   
