@@ -118,3 +118,201 @@ function enableElements(el) {
         enableElements(el[i].children);
     }
 }
+
+
+function miVidometro($){
+    jQuery.ajax({   type: "POST"
+                    ,url: "admin-ajax.php"
+                    ,data: {action: "action", id: "integrantes", method:"getVidometro"}
+                }).done(function(data){
+                        var objJson = jQuery.parseJSON(data);
+                        var dataValue = parseInt(objJson.rows[0].cell[0]);
+                        if(dataValue){
+                            var gaugeOptions = {
+
+                                        chart: {
+                                            type: 'solidgauge'
+                                        },
+
+                                        title: null,
+
+                                        pane: {
+                                            center: ['50%', '85%'],
+                                            size: '100%',
+                                            startAngle: -90,
+                                            endAngle: 90,
+                                            background: {
+                                                backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || '#EEE',
+                                                innerRadius: '60%',
+                                                outerRadius: '100%',
+                                                shape: 'arc'
+                                            }
+                                        },
+
+                                        tooltip: {
+                                            enabled: false
+                                        },
+
+                                        // the value axis
+                                        yAxis: {
+                                            stops: [
+                                                [0.59, '#DF5353'], // red  
+                                                [0.79, '#DDDF0D'], // yellow
+                                                [1, '#55BF3B'] // green
+                                            ],
+                                            lineWidth: 0,
+                                            minorTickInterval: null,
+                                            tickPixelInterval: 400,
+                                            tickWidth: 0,
+                                            title: {
+                                                y: -70
+                                            },
+                                            labels: {
+                                                y: 16
+                                            }
+                                        },
+
+                                        plotOptions: {
+                                            solidgauge: {
+                                                dataLabels: {
+                                                    y: 5,
+                                                    borderWidth: 0,
+                                                    useHTML: true
+                                                }
+                                            }
+                                        }
+                                    };
+
+                                    $('#vidometro-gauge').highcharts(Highcharts.merge(gaugeOptions, {
+                                        yAxis: {
+                                            min: 0,
+                                            max: 100,
+                                            title: {
+                                                text: 'Vidometro'
+                                            }
+                                        },
+
+                                        credits: {
+                                            enabled: false
+                                        },
+
+                                        series: [{
+                                            name: 'Vida',
+                                            data: [dataValue],
+                                            dataLabels: {
+                                                format: '<div style="text-align:center"><span style="font-size:25px;color:' +
+                                                    ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' +
+                                                       '<span style="font-size:12px;color:silver">% Vida</span></div>'
+                                            },
+                                            tooltip: {
+                                                valueSuffix: ' % Vida'
+                                            }
+                                        }]
+
+                                    }));
+                        }
+                    });
+    
+}
+
+function miPerfil($){
+    jQuery.ajax({   type: "POST"
+                    ,url: "admin-ajax.php"
+                    ,data: {action: "action", id: "integrantes", method:"getFillProfile"}
+                }).done(function(data){
+                        var objJson = jQuery.parseJSON(data);
+                        var dataValue = parseInt(objJson.rows[0].cell[1]);
+                        if(dataValue){
+                            var gaugeOptions = {
+
+                                        chart: {
+                                            type: 'solidgauge'
+                                        },
+
+                                        title: null,
+
+                                        pane: {
+                                            center: ['50%', '85%'],
+                                            size: '100%',
+                                            startAngle: -90,
+                                            endAngle: 90,
+                                            background: {
+                                                backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || '#EEE',
+                                                innerRadius: '60%',
+                                                outerRadius: '100%',
+                                                shape: 'arc'
+                                            }
+                                        },
+
+                                        tooltip: {
+                                            enabled: false
+                                        },
+
+                                        // the value axis
+                                        yAxis: {
+                                            stops: [
+                                                [0.8, '#DF5353'], // red  
+                                                [0.95, '#DDDF0D'], // yellow
+                                                [1, '#55BF3B'] // green
+                                            ],
+                                            lineWidth: 0,
+                                            minorTickInterval: null,
+                                            tickPixelInterval: 400,
+                                            tickWidth: 0,
+                                            title: {
+                                                y: -70
+                                            },
+                                            labels: {
+                                                y: 16
+                                            }
+                                        },
+
+                                        plotOptions: {
+                                            solidgauge: {
+                                                dataLabels: {
+                                                    y: 5,
+                                                    borderWidth: 0,
+                                                    useHTML: true
+                                                }
+                                            }
+                                        }
+                                    };
+
+                                    $('#perfil-gauge').highcharts(Highcharts.merge(gaugeOptions, {
+                                        yAxis: {
+                                            min: 0,
+                                            max: 100,
+                                            title: {
+                                                text: 'Perfil integrante'
+                                            }
+                                        },
+
+                                        credits: {
+                                            enabled: false
+                                        },
+
+                                        series: [{
+                                            name: 'Integrante',
+                                            data: [dataValue],
+                                            dataLabels: {
+                                                format: '<div style="text-align:center"><span style="font-size:25px;color:' +
+                                                    ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' +
+                                                       '<span style="font-size:12px;color:silver">% Completo</span></div>'
+                                            },
+                                            tooltip: {
+                                                valueSuffix: ' % Completo'
+                                            }
+                                        }]
+
+                                    }));
+                        }
+                    });
+    
+}
+
+jQuery(document).ready(function($){
+    jQuery(".ui-jqgrid-titlebar").hide();
+    
+    miVidometro($);
+    miPerfil($);
+});

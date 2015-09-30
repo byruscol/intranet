@@ -104,6 +104,90 @@ class integrantes extends DBManagerModel{
         return $familiares->getIntegrantesFamiliares($params);
     }
     
+    public function getVidometro(){
+        $query = "SELECT ROUND(valor, 1) valor from ".$this->pluginPrefix."totalvidometros WHERE integranteId =". $this->currentIntegrante;
+        return $this->getDataGrid($query, 0, 1 , "fecha", "DESC");
+    }
+    
+    public function getFillProfile(){
+        $query = "SELECT it.integranteId
+                    , ((CASE WHEN it.fechaNacimiento IS NULL OR it.fechaNacimiento = '1990-01-01' THEN 0 ELSE 1 END 
+                    + CASE WHEN it.telefono IS NULL OR it.telefono = 'NA' THEN 0 ELSE 1 END 
+                    + CASE WHEN it.celular IS NULL OR it.celular = 'NA' THEN 0 ELSE 1 END 
+                    + CASE WHEN it.email IS NULL THEN 0 ELSE 1 END 
+                    + CASE WHEN it.emailPersonal IS NULL OR it.emailPersonal = 'NA' THEN 0 ELSE 1 END 
+                    + CASE WHEN it.localidad IS NULL OR it.localidad = 'NA' THEN 0 ELSE 1 END 
+                    + CASE WHEN it.barrio IS NULL OR it.barrio = 'NA' THEN 0 ELSE 1 END 
+                    + CASE WHEN it.direccion IS NULL OR it.direccion = 'NA' THEN 0 ELSE 1 END 
+                    + CASE WHEN a.T < 1 OR a.T IS NULL THEN 0 ELSE 1 END 
+                    + CASE WHEN i.T < 1 OR i.T IS NULL THEN 0 ELSE 1 END 
+                    + CASE WHEN l.T < 1 OR l.T IS NULL THEN 0 ELSE 1 END 
+                    + CASE WHEN f.T < 1 OR f.T IS NULL THEN 0 ELSE 1 END 
+                    + CASE WHEN h.T < 1 OR h.T IS NULL THEN 0 ELSE 1 END 
+                    + CASE WHEN r.T < 1 OR r.T IS NULL THEN 0 ELSE 1 END 
+                    + CASE WHEN fa.T <> a.T OR fa.T IS NULL THEN 0 ELSE 1 END 
+                    + CASE WHEN fi.T <> a.T OR fi.T IS NULL THEN 0 ELSE 1 END 
+                    + CASE WHEN fl.T <> a.T OR fl.T IS NULL THEN 0 ELSE 1 END 
+                    + CASE WHEN ff.T <> a.T OR ff.T IS NULL THEN 0 ELSE 1 END )/18)*100 total
+                FROM 
+                        apps.wp_rh_integrantes it
+                        LEFT JOIN (
+                                SELECT integranteId, COUNT(1) T FROM ".$this->pluginPrefix."infoAcademica
+                                GROUP BY integranteId
+                        ) a ON a.integranteId = it.integranteId
+                        LEFT JOIN (
+                                SELECT integranteId, COUNT(1) T FROM ".$this->pluginPrefix."infoIdiomas
+                                GROUP BY integranteId
+                        ) i ON i.integranteId = it.integranteId
+                        LEFT JOIN (
+                                SELECT integranteId, COUNT(1) T FROM ".$this->pluginPrefix."infoLaboral
+                                GROUP BY integranteId
+                        ) l ON l.integranteId = it.integranteId
+                        LEFT JOIN (
+                                SELECT integranteId, COUNT(1) T FROM ".$this->pluginPrefix."familiares
+                                GROUP BY integranteId
+                        ) f ON f.integranteId = it.integranteId
+                        LEFT JOIN (
+                                SELECT integranteId, COUNT(1) T FROM ".$this->pluginPrefix."integrantesHobies
+                                GROUP BY integranteId
+                        ) h ON h.integranteId = it.integranteId
+                        LEFT JOIN (
+                                SELECT integranteId, COUNT(1) T FROM ".$this->pluginPrefix."IntegrantesRedesSociales
+                                GROUP BY integranteId
+                        ) r ON r.integranteId = it.integranteId
+                        LEFT JOIN (
+                                SELECT integranteId, COUNT(1) T 
+                                FROM ".$this->pluginPrefix."filesInfoAcademica fia
+                                         JOIN ".$this->pluginPrefix."infoAcademica ia ON ia.infoAcademicaId = fia.infoAcademicaId
+                                GROUP BY integranteId
+                        ) fa ON fa.integranteId = it.integranteId
+                        LEFT JOIN (
+                                SELECT integranteId, COUNT(1) T 
+                                FROM ".$this->pluginPrefix."filesInfoIdiomas fia
+                                        JOIN ".$this->pluginPrefix."infoIdiomas ia ON ia.infoIdiomaId = fia.infoIdiomaId
+                                GROUP BY integranteId
+                        ) fi ON fi.integranteId = it.integranteId
+                        LEFT JOIN (
+                                SELECT integranteId, COUNT(1) T 
+                                FROM ".$this->pluginPrefix."filesInfoLaboral fia
+                                       JOIN ".$this->pluginPrefix."infoLaboral ia ON ia.infoLaboralId = fia.infoLaboralId
+                                GROUP BY integranteId
+                        ) fl ON fl.integranteId = it.integranteId
+                        LEFT JOIN (
+                                SELECT integranteId, count(1) T
+                                FROM
+                                (
+                                        SELECT integranteId,  fia.familiarId
+                                        FROM ".$this->pluginPrefix."fotosFamiliares fia
+                                                 JOIN ".$this->pluginPrefix."familiares ia ON ia.familiarId = fia.familiarId
+                                        GROUP BY integranteId, fia.familiarId
+                                ) dt
+                                GROUP BY integranteId
+                        ) ff ON ff.integranteId = it.integranteId"
+                . " WHERE it.integranteId = ".$this->currentIntegrante;
+        return $this->getDataGrid($query, 0, 1 , "total", "ASC");
+    }
+    
     public function add(){
         $entity = $this->entity();
         if($this->isRhAdmin){

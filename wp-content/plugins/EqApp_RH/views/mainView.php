@@ -46,15 +46,49 @@ function my_login_redirect($redirect_to, $request){
         static $p;
         static function init() {
 
-            add_shortcode('library_Shortcode', array(__CLASS__, 'library_handle_shortcode'));
-            
+            add_action('wp_dashboard_setup', array(__CLASS__, 'remove_dashboard_widgets') );
+            add_action('wp_dashboard_setup', array(__CLASS__, 'custom_dashboard_widgets'));
             //if(!is_admin()){
 
-                add_action('init', array(__CLASS__, 'register_script'));
-                add_action('wp_footer', array(__CLASS__, 'print_script'));
+                add_action('admin_head', array(__CLASS__, 'register_script'));
+                //add_action('admin_head', array(__CLASS__, 'print_script'));
             //}
         }
         
+        static function remove_dashboard_widgets(){
+            global $wp_meta_boxes;
+            global $wp_filter;
+            
+            unset ($wp_filter['welcome_panel']);
+            remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
+            remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'side' );
+            remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );
+            remove_meta_box( 'dashboard_secondary', 'dashboard', 'side' );
+            remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );
+            remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'normal' );
+            remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );
+            remove_meta_box( 'dashboard_plugins', 'dashboard', 'normal' );
+            remove_meta_box( 'dashboard_browser_nag', 'dashboard', 'normal' );
+            remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' );
+            
+        }
+        
+        static function custom_dashboard_widgets(){
+            global $wp_meta_boxes;
+            /*
+            if(current_user_can( "publish_posts" )){
+                add_meta_box( 'params_dashboard_widget', 'Seleccione cliente', array(__CLASS__, 'params_dashboard_widget_function'), 'dashboard', 'normal', 'high' );
+            }
+            */
+            add_meta_box( 'vidometro', 'Vidometro y perfil integrante   ', array(__CLASS__, 'vidometro_function'), 'dashboard', 'normal', 'high' );
+            /*add_meta_box( 'customerFiles_dashboard_widget', 'Archivos de interés', array(__CLASS__, 'customerFiles_dashboard_widget_function'), 'dashboard', 'normal', 'high' );
+            add_meta_box( 'hojaVida_dashboard_widget', 'Hoja de vida', array(__CLASS__, 'hojaVida_dashboard_widget_function'), 'dashboard', 'side', 'high' );
+            add_meta_box( 'laflota_dashboard_widget', 'La Flota', array(__CLASS__, 'laflota_dashboard_widget_function'), 'dashboard', 'side', 'high' );*/
+        }
+        static function vidometro_function(){
+            echo '<div id="vidometro-gauge" class="gauge">Cargando...</div>'
+            . '   <div id="perfil-gauge" class="gauge">Cargando...</div>';
+        }
 	static function addStyle(){
 		echo '<style>aside{
 				    width: 0px !important;
@@ -73,25 +107,6 @@ function my_login_redirect($redirect_to, $request){
 				}</style>';
 	}
 
-        static function library_handle_shortcode($atts) {
-            
-            ?>
-                <canvas id="the-canvas" style="border:1px solid black;"/>
-            <?php
-            /*<iframe src="http://docs.google.com/gview?url=http://infolab.stanford.edu/pub/papers/google.pdf&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe>
-             * <iframe src="http://localhost/apps/wp-content/plugins/EqApp_RH/viewFile.php" style="width:600px; height:500px;" frameborder="0"></iframe>
-             * global $resource;
-		
-            self::$add_script = true;
-            if ( !is_user_logged_in() )
-                return $resource->getWord("necesitaAutenticarse");
-            else
-                include (__DIR__."/PQRCustomerServiceView/PQRCustomerServiceView.php");
-	     
-            self::addStyle();*/
-        }
-        
-	
         static function viewJSScripts() {
             /*global $pluginURL;
             global $pluginPath;
@@ -134,8 +149,14 @@ function my_login_redirect($redirect_to, $request){
         static function register_script() {
           
                 if ( is_user_logged_in() ){
-                    wp_register_script('pdf', plugins_url('../js/pdfjs/pdf.js', __FILE__), array('jquery'), '1.0', true);
-                    wp_enqueue_script('pdf');
+                    wp_register_script('highcharts', plugins_url('../js/highcharts/highcharts.js', __FILE__), array('jquery'), '1.0', true);
+                    wp_enqueue_script('highcharts');
+                    
+                    wp_register_script('highcharts-more', plugins_url('../js/highcharts/highcharts-more.js', __FILE__), array('jquery'), '1.0', true);
+                    wp_enqueue_script('highcharts-more');
+                    
+                    wp_register_script('solid-gauge', plugins_url('../js/highcharts/modules/solid-gauge.js', __FILE__), array('jquery'), '1.0', true);
+                    wp_enqueue_script('solid-gauge');
                     /*wp_register_script('worker_loader', plugins_url('../js/pdfjs/worker_loader.js', __FILE__), array('jquery'), '1.0', true);
                     wp_enqueue_script('worker_loader');*/
                     /*wp_register_script('hello', plugins_url('../js/hello.js', __FILE__), array('jquery'), '1.0', true);
@@ -208,13 +229,13 @@ function my_login_redirect($redirect_to, $request){
                 if ( ! self::$add_script )
                         return;
                 if ( is_user_logged_in() ){
-                    wp_print_scripts('pdf'); 
-                    wp_print_scripts('worker_loader');
-                    wp_print_scripts('hello');
+                    wp_print_scripts('highcharts'); 
+                    wp_print_scripts('highcharts-more');
+                    wp_print_scripts('solid-gauge');
                     //wp_print_scripts('jquery-u');*/
                 }
         }
 }
-if(!is_admin())
+//if(!is_admin())
     library_Shortcodes::init();
 ?>
